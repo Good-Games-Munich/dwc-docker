@@ -27,7 +27,7 @@
 
 ## About The Project
 
-Custom multiplayer server for a number of nintendo games.
+Custom multiplayer server for a number of nintendo games based on [dwc_network_server_emulator](https://github.com/barronwaffles/dwc_network_server_emulator) and [dwc-docker](https://github.com/TheForcer/dwc-docker).
 
 ## Setup
 
@@ -35,7 +35,8 @@ Custom multiplayer server for a number of nintendo games.
 > This setup is meant to be run on a local network only on a dedicated server. It maps port 80 to its host and uses unsecure HTTP.
 
 1. Follow the [Customization](#customization) section.
-2. Start up the container `docker-compose up --build`.
+2. Follow [Spoofing nintendowifi.net DNS records](https://github.com/TheForcer/dwc-docker/blob/main/README.md#method-2-spoofing-nintendowifinet-dns-records)
+3. Start up the container `docker-compose up --build`.
 
 ### Customization
 
@@ -68,6 +69,7 @@ Create a environment file `touch .env`. Override variables in the `{variable nam
 ## Further documentation
 
 https://github.com/barronwaffles/dwc_network_server_emulator/wiki
+https://github.com/TheForcer/dwc-docker
 
 <!-- CONTRIBUTING -->
 
