@@ -44,7 +44,7 @@ Create a environment file `touch .env`. Override variables in the `{variable nam
 | Variable             | Description                         | Default value |
 | -------------------- | ----------------------------------- | ------------- |
 | `HOST_IP`            | IP of the docker host used for DNS. | none          |
-| `DWC_ADMIN_PASSWORD` | DWC admin page password.            | none          |
+| `DWC_ADMIN_USERNAME` | DWC admin page username.            | none          |
 | `DWC_ADMIN_PASSWORD` | DWC admin page password.            | none          |
 
 ## Port mapping
