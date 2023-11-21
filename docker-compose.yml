@@ -1,34 +1,51 @@
-version: "3"
+version: "3.8"
 services:
 
   haproxy:
-    image: haproxy:lts-alpine
-    container_name: dwc_haproxy
+    image: haproxy:2.8-alpine
+
+    container_name: dwcHaproxy
+
     restart: unless-stopped
+
     ports:
       - 80:80
+
     volumes:
-     - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
-    sysctls:
-     - net.ipv4.ip_unprivileged_port_start=0
+     - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+
+    # TODO: do we need this?
+    # sysctls:
+    #  - net.ipv4.ip_unprivileged_port_start=0
 
   dwc:
     build: .
-    container_name: dwc_server
+
+    container_name: dwcServer
+
     restart: unless-stopped
+
+    environment:
+      - DWC_ADMIN_USERNAME: ${DWC_ADMIN_USERNAME?Missing environment variable see readme}
+      - DWC_ADMIN_PASSWORD: ${DWC_ADMIN_PASSWORD?Missing environment variable see readme}
+
     ports:
-      - 8000:8000
-      - 9000:9000
-      - 9001:9001
-      - 27500:27500
-      - 28910:28910
-      - 29900:29900
-      - 29901:29901
-      - 29920:29920
-      - 27900:27900/udp
-      - 27901:27901/udp
+      - 8000:8000       # StorageServer
+      - 9000:9000       # NasServer
+      - 9001:9001       # InternalStatsServer
+      - 27500:27500     # GameSpyManager
+      - 28910:28910     # GameSpyServerBrowserServer
+      - 29900:29900     # GameSpyProfileServer
+      - 29901:29901     # GameSpyPlayerSearchServer
+      - 29920:29920     # GameSpyGamestatsServer
+      - 27900:27900/udp # GameSpyQRServer
+      - 27901:27901/udp # GameSpyNatNegServer
+      - 9003:9003       # Dls1Server
+      - 9009:9009       # AdminPage
+      - 9998:9998       # RegisterPage
+
     volumes:
-      - data:/dwc/data
+      - dwcData:/dwc/data
 
 volumes:
-  data:
+  dwcData:
