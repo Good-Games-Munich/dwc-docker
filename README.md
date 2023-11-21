@@ -32,25 +32,25 @@ Custom multiplayer server for a number of nintendo games based on [dwc_network_s
 ## Setup
 
 > [!WARNING]
-> This setup is meant to be run on a local network only on a dedicated server. It maps port 80 to its host and uses unsecure HTTP.
+> This setup is meant to be run on a local network only on a dedicated server. It maps port 80 and 53 to its host and uses unsecure HTTP.
 
 1. Follow the [Customization](#customization) section.
-2. Follow [Spoofing nintendowifi.net DNS records](https://github.com/TheForcer/dwc-docker/blob/main/README.md#method-2-spoofing-nintendowifinet-dns-records)
-3. Start up the container `docker-compose up --build`.
+2. Start up the container `docker-compose up --build`.
 
 ### Customization
 
 Create a environment file `touch .env`. Override variables in the `{variable name}={variable value}` format.
 
-| Variable             | Description              | Default value |
-| -------------------- | ------------------------ | ------------- |
-| `DWC_ADMIN_USERNAME` | DWC admin page username. | none          |
-| `DWC_ADMIN_PASSWORD` | DWC admin page password. | none          |
+| Variable             | Description                         | Default value |
+| -------------------- | ----------------------------------- | ------------- |
+| `HOST_IP`            | IP of the docker host used for DNS. | none          |
+| `DWC_ADMIN_PASSWORD` | DWC admin page password.            | none          |
+| `DWC_ADMIN_PASSWORD` | DWC admin page password.            | none          |
 
 ## Port mapping
 
 | Protocol | Port  | Service                    |
-|----------|-------|----------------------------|
+| -------- | ----- | -------------------------- |
 | TCP      | 80    | WebServer                  |
 | TCP      | 8000  | StorageServer              |
 | TCP      | 9000  | NasServer                  |
@@ -66,10 +66,14 @@ Create a environment file `touch .env`. Override variables in the `{variable nam
 | TCP      | 9009  | AdminPage                  |
 | TCP      | 9998  | RegisterPage               |
 
+## Playing
+
+1. Setup the Ip you used in `HOST_IP` as DNS for the WII
+2. Apply any NoSSL patch
+
 ## Further documentation
 
 https://github.com/barronwaffles/dwc_network_server_emulator/wiki
-https://github.com/TheForcer/dwc-docker
 
 <!-- CONTRIBUTING -->
 

@@ -1,6 +1,21 @@
 version: "3.8"
 services:
 
+  bind9:
+    build:
+      context: bind9
+
+    container_name: dwcBind9DNS
+
+    restart: unless-stopped
+
+    environment:
+      HOST_IP: ${HOST_IP?Missing environment variable see readme}
+
+    ports:
+      - 53:53/udp
+      - 53:53
+
   haproxy:
     image: haproxy:2.8-alpine
 
@@ -14,20 +29,17 @@ services:
     volumes:
      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
 
-    # TODO: do we need this?
-    # sysctls:
-    #  - net.ipv4.ip_unprivileged_port_start=0
-
   dwc:
-    build: .
+    build:
+      context: dwc
 
     container_name: dwcServer
 
     restart: unless-stopped
 
     environment:
-      - DWC_ADMIN_USERNAME: ${DWC_ADMIN_USERNAME?Missing environment variable see readme}
-      - DWC_ADMIN_PASSWORD: ${DWC_ADMIN_PASSWORD?Missing environment variable see readme}
+      DWC_ADMIN_USERNAME: ${DWC_ADMIN_USERNAME?Missing environment variable see readme}
+      DWC_ADMIN_PASSWORD: ${DWC_ADMIN_PASSWORD?Missing environment variable see readme}
 
     ports:
       - 8000:8000       # StorageServer

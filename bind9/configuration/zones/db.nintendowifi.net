@@ -1,0 +1,26 @@
+$TTL    604800
+@       IN      SOA     ns.nintendowifi.net. admin.nintendowifi.net. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.nintendowifi.net.
+ns      IN      A       HOST_IP
+
+gamestats               IN      A       HOST_IP
+gamestats2              IN      A       HOST_IP
+gpcm                    IN      A       HOST_IP
+gpsp                    IN      A       HOST_IP
+mariokartwii.available  IN      A       HOST_IP
+mariokartwii.gamestats  IN      A       HOST_IP
+mariokartwii.gamestats2 IN      A       HOST_IP
+mariokartwii.master     IN      A       HOST_IP
+mariokartwii.ms19       IN      A       HOST_IP
+mariokartwii.natneg1    IN      A       HOST_IP
+mariokartwii.natneg2    IN      A       HOST_IP
+mariokartwii.natneg3    IN      A       HOST_IP
+mariokartwii.sake       IN      A       HOST_IP
+naswii                  IN      A       HOST_IP
+nas                     IN      A       HOST_IP
