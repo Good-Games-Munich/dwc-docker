@@ -1,8 +1,0 @@
-options {
-    forwarders {
-        8.8.8.8;
-        8.8.4.4;
-    };
-    listen-on { any; };
-    allow-query { any; };
-};

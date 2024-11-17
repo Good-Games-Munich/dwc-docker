@@ -1,9 +1,0 @@
-zone "nintendowifi.net" {
-    type master;
-    file "zones/db.nintendowifi.net";
-};
-
-zone "wiimmfi.de" {
-    type master;
-    file "zones/db.wiimmfi.de";
-};

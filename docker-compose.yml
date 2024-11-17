@@ -1,21 +1,6 @@
 version: "3.8"
 services:
 
-  bind9:
-    build:
-      context: bind9
-
-    container_name: dwcBind9DNS
-
-    restart: unless-stopped
-
-    environment:
-      HOST_IP: ${HOST_IP?Missing environment variable see readme}
-
-    ports:
-      - 53:53/udp
-      - 53:53
-
   haproxy:
     image: haproxy:2.8-alpine
 
@@ -28,6 +13,23 @@ services:
 
     volumes:
      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+
+  dns:
+    build:
+      context: dnsmasq
+
+    container_name: dwcDns
+
+    ports:
+      - 53:53/udp
+      - 53:53
+
+    environment:
+      HOST_IP: ${HOST_IP?Missing environment variable see readme}
+      PRIMARY_FORWARD_DNS: ${PRIMARY_FORWARD_DNS-8.8.8.8}
+      SECONDARY_FORWARD_DNS: ${SECONDARY_FORWARD_DNS-8.8.4.4}
+
+    restart: unless-stopped
 
   dwc:
     build:
@@ -61,3 +63,4 @@ services:
 
 volumes:
   dwcData:
+    driver: local

@@ -41,11 +41,13 @@ Custom multiplayer server for a number of nintendo games based on [dwc_network_s
 
 Create a environment file `touch .env`. Override variables in the `{variable name}={variable value}` format.
 
-| Variable             | Description                         | Default value |
-| -------------------- | ----------------------------------- | ------------- |
-| `HOST_IP`            | IP of the docker host used for DNS. | none          |
-| `DWC_ADMIN_USERNAME` | DWC admin page username.            | none          |
-| `DWC_ADMIN_PASSWORD` | DWC admin page password.            | none          |
+| Variable                | Description                         | Default value |
+| ----------------------- | ----------------------------------- | ------------- |
+| `HOST_IP`               | IP of the docker host used for DNS. | none          |
+| `DWC_ADMIN_USERNAME`    | DWC admin page username.            | none          |
+| `DWC_ADMIN_PASSWORD`    | DWC admin page password.            | none          |
+| `PRIMARY_FORWARD_DNS`   | Primary forward DNS.                | 8.8.8.8       |
+| `SECONDARY_FORWARD_DNS` | Secondary forward DNS.              | 8.8.4.4       |
 
 ## Port mapping
 
@@ -68,7 +70,7 @@ Create a environment file `touch .env`. Override variables in the `{variable nam
 
 ## Playing
 
-1. Setup the Ip you used in `HOST_IP` as DNS for the WII
+1. Setup the IP you used in `HOST_IP` as DNS for the WII
 2. Apply any NoSSL patch
 
 ## Further documentation
