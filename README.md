@@ -68,10 +68,6 @@ Create a environment file `touch .env`. Override variables in the `{variable nam
 | TCP      | 9009  | AdminPage                  |
 | TCP      | 9998  | RegisterPage               |
 
-## Playing
-
-1. Setup the IP you used in `HOST_IP` as DNS for the WII
-2. Apply any NoSSL patch
 
 ## Further documentation
 

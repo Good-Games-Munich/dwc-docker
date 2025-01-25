@@ -6,7 +6,7 @@ services:
 
     container_name: dwcHaproxy
 
-    restart: unless-stopped
+    restart: always
 
     ports:
       - 80:80
@@ -29,7 +29,7 @@ services:
       PRIMARY_FORWARD_DNS: ${PRIMARY_FORWARD_DNS-8.8.8.8}
       SECONDARY_FORWARD_DNS: ${SECONDARY_FORWARD_DNS-8.8.4.4}
 
-    restart: unless-stopped
+    restart: always
 
   dwc:
     build:
@@ -37,7 +37,7 @@ services:
 
     container_name: dwcServer
 
-    restart: unless-stopped
+    restart: always
 
     environment:
       DWC_ADMIN_USERNAME: ${DWC_ADMIN_USERNAME?Missing environment variable see readme}
