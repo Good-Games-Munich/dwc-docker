@@ -59,8 +59,8 @@ services:
       - 9998:9998       # RegisterPage
 
     volumes:
-      - dwcData:/dwc/data
+      - dwcDataTest:/dwc/data
 
 volumes:
-  dwcData:
+  dwcDataTest:
     driver: local
