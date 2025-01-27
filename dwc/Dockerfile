@@ -13,9 +13,11 @@ RUN git clone https://github.com/barronwaffles/dwc_network_server_emulator.git /
     cd /dwc && \
     git checkout $DWC_VERSION
 
-# Patch the server to use the correct database paths and listen on all interfaces
+# Patch all files in the /dwc directory to listen on all interfaces
+RUN find /dwc -type f -exec sed -i "s/127.0.0.1/0.0.0.0/g" {} \;
+
+# Patch the server to use the correct database paths
 RUN cd /dwc && \
-    sed -i "s/127.0.0.1/0.0.0.0/g" altwfc.cfg && \
     sed -i "s?gpcm.db?./data/gpcm.db?g" register_page.py && \
     sed -i "s?gpcm.db?./data/gpcm.db?g" admin_page_server.py && \
     sed -i "s?gpcm.db?./data/gpcm.db?g" gamespy/gs_database.py && \
